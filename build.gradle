@@ -33,9 +33,6 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	
-	// https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
-	compileOnly 'javax.servlet:javax.servlet-api:3.1.0'
-	
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	}
 }
