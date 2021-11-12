@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.annotations.MetaValue;
 
 import lombok.Data;
 
@@ -22,6 +25,7 @@ public class Member {
 	@Column(name = "member_id")
 	private Long id;
 	
+	@NotEmpty(message = "이름은 필수로 넣어야 합니다.")
 	private String name;
 	
 	@Embedded
