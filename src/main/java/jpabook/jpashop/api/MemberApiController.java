@@ -24,7 +24,6 @@ public class MemberApiController {
 	public CreateMemberResponse saveMemberV1(@RequestBody @Valid Member member) {
 		Long id = memberService.join(member);
 		return new CreateMemberResponse(id);
-		
 	}
 	
 	@PostMapping("/api/v2/members")
