@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -21,6 +23,7 @@ public class Delivery {
 	@Column(name = "DELIVERY_ID")
 	private Long id;
 	
+	@JsonIgnore
 	@OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
 	private Order order;
 	
