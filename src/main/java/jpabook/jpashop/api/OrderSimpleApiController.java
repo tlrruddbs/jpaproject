@@ -4,10 +4,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jpabook.jpashop.api.OrderApiController.OrderDto;
 import jpabook.jpashop.entity.Address;
 import jpabook.jpashop.entity.Order;
 import jpabook.jpashop.entity.OrderSearch;
@@ -42,13 +42,15 @@ public class OrderSimpleApiController {
 		return result;
 	}
 	
-	@GetMapping("/api/v3/simple-orders")
-	public List<SimpleOrderDto> orderV3(){
+	@GetMapping("/api/v3.1/orders")
+	public List<OrderDto> ordersV3_page(){
 		List<Order> orders = orderRepository.findAllWithMemberDelivery();
 		
-		return orders.stream()
-			.map(o->new SimpleOrderDto(o))
-			.collect(Collectors.toList());
+		List<OrderDto> result = orders.stream()
+				.map(o-> new OrderDto(o))
+				.collect(Collectors.toList());
+		
+		return result;
 	}
 	
 	@Data
@@ -67,4 +69,5 @@ public class OrderSimpleApiController {
 			address = order.getDelivery().getAddress(); //LAZY 초기화
 		}
 	}
+
 }
